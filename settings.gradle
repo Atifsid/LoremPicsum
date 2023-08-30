@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "LoremPicsum"
+include ':app'
+include ':lorempicsum:lorempicsum_data'
+include ':lorempicsum:lorempicsum_domain'
+include ':lorempicsum:lorempicsum_presentation'
+include ':common:common_utils'
+include ':lorempicsuminfo:lorempicsuminfo_data'
+include ':lorempicsuminfo:lorempicsuminfo_domain'
+include ':lorempicsuminfo:lorempicsuminfo_presentation'
