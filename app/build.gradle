@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.example.lorempicsum'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.lorempicsum"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -26,11 +26,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+    kotlin {
+        jvmToolchain(17)
+    }
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 }
 
@@ -53,4 +63,25 @@ dependencies {
     implementation DaggerHilt.hilt
     kapt DaggerHilt.hiltAndroidCompiler
     kapt DaggerHilt.hiltCompiler
+
+    def composeBom = platform(ComposeBOM.bom)
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    implementation Deps.androidMaterial3
+
+    implementation ComposePreview.uiToolingPreview
+    debugImplementation ComposePreview.uiTooling
+
+    androidTestImplementation ComposeTestImplementation.composeJunit
+    debugImplementation ComposeTestImplementation.uiTestManifest
+
+    implementation MaterialIcon.iconsCore
+    implementation MaterialIcon.iconsExtended
+    implementation MaterialIcon.windowSize
+
+    implementation ComposeSpecific.activity
+    implementation ComposeSpecific.viewModel
+    implementation ComposeSpecific.liveData
+    implementation ComposeSpecific.rxJava
 }

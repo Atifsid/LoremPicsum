@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace 'com.example.lorempicsum_presentation'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -25,11 +25,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
     }
     viewBinding{
         enabled = true
+    }
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 }
 
@@ -62,4 +72,25 @@ dependencies {
     implementation(CircularProgressBar.swipeRefresh)
 
     implementation(ViewModelDelegate.viewModelDeligate)
+
+    def composeBom = platform(ComposeBOM.bom)
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    implementation Deps.androidMaterial3
+
+    implementation ComposePreview.uiToolingPreview
+    debugImplementation ComposePreview.uiTooling
+
+    androidTestImplementation ComposeTestImplementation.composeJunit
+    debugImplementation ComposeTestImplementation.uiTestManifest
+
+    implementation MaterialIcon.iconsCore
+    implementation MaterialIcon.iconsExtended
+    implementation MaterialIcon.windowSize
+
+    implementation ComposeSpecific.activity
+    implementation ComposeSpecific.viewModel
+    implementation ComposeSpecific.liveData
+    implementation ComposeSpecific.rxJava
 }

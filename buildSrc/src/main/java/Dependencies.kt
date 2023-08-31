@@ -24,6 +24,11 @@ object Versions {
     const val viewModelDeligate = "1.7.2"
 
     const val swipeRefresh = "1.1.0"
+
+    const val composeBom = "2023.08.00"
+
+    const val composeActivity = "1.7.2"
+    const val composeViewModel = "2.6.1"
 }
 
 object Deps {
@@ -31,6 +36,7 @@ object Deps {
     const val appCompact = "androidx.appcompat:appcompat:${Versions.appCompact}"
     const val androidMaterial = "com.google.android.material:material:${Versions.androidMaterial}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constrainLayout}"
+    const val androidMaterial3 = "androidx.compose.material3:material3"
 }
 
 object TestImplementation {
@@ -81,4 +87,31 @@ object ViewModelDelegate {
 object CircularProgressBar {
     const val swipeRefresh =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefresh}"
+}
+
+object ComposeBOM {
+    const val bom = "androidx.compose:compose-bom:${Versions.composeBom}"
+}
+
+object ComposePreview {
+    const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
+    const val uiTooling = "androidx.compose.ui:ui-tooling"
+}
+
+object ComposeTestImplementation {
+    const val composeJunit = "androidx.compose.ui:ui-test-junit4"
+    const val uiTestManifest = "androidx.compose.ui:ui-test-manifest"
+}
+
+object MaterialIcon {
+    const val iconsCore = "androidx.compose.material:material-icons-core"
+    const val iconsExtended = "androidx.compose.material:material-icons-extended"
+    const val windowSize = "androidx.compose.material3:material3-window-size-class"
+}
+
+object ComposeSpecific {
+    const val activity = "androidx.activity:activity-compose:${Versions.composeActivity}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModel}"
+    const val liveData = "androidx.compose.runtime:runtime-livedata"
+    const val rxJava = "androidx.compose.runtime:runtime-rxjava2"
 }
