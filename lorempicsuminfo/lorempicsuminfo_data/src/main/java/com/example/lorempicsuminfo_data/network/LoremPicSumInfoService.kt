@@ -7,5 +7,5 @@ import retrofit2.http.Path
 interface LoremPicSumInfoService {
 
     @GET("id/{imgId}/info")
-    fun getPictureInfo(@Path("imgId") imgId: Int): PicSumInfoResponseDTO
+    fun getPictureInfo(@Path("imgId") imgId: String): PicSumInfoResponseDTO
 }

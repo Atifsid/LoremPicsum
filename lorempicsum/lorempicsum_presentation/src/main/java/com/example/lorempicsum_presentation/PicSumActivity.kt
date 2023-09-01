@@ -2,23 +2,20 @@ package com.example.lorempicsum_presentation
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.example.common_utils.Navigator
+import com.example.lorempicsum_presentation.pages.AppTheme
+import com.example.lorempicsum_presentation.pages.PicSumList
 import com.example.lorempicsum_presentation.viewmodel.PicSumViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -37,44 +34,35 @@ class PicSumActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_pic_sum)
-
-        setContent { ColumnDemo() }
-
-
-//        setObservers()
+        setObservers()
     }
 
     private fun setObservers(){
         lifecycleScope.launchWhenStarted {
             picSumViewModel.picSumImage.collectLatest {
                 if(it.isLoading){
-
+                    setContent {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            CircularProgressIndicator()
+                        }
+                    }
                 }
                 if (it.error.isNotBlank()){
-                    Toast.makeText(this@PicSumActivity, it.error, Toast.LENGTH_SHORT).show()
+                    setContent {
+                        Toast.makeText(this@PicSumActivity, it.error, Toast.LENGTH_SHORT).show()
+                    }
                 }
                 it.data?.let {
-                    Log.d("TAG", "setObservers: ${it}")
+                    setContent {
+                        AppTheme {
+                            PicSumList(imageModels = it)
+                        }
+                    }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun ColumnDemo() {
-
-    Column {
-        for (i in 1..100) {
-            Text(
-                "User Name $i",
-                style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.padding(10.dp)
-            )
-
-            Divider(color = Color.Black, thickness = 5.dp)
-
         }
     }
 }

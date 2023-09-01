@@ -29,6 +29,10 @@ object Versions {
 
     const val composeActivity = "1.7.2"
     const val composeViewModel = "2.6.1"
+
+    const val coilCompose = "2.4.0"
+
+    const val navVersion = "2.7.1"
 }
 
 object Deps {
@@ -114,4 +118,9 @@ object ComposeSpecific {
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.composeViewModel}"
     const val liveData = "androidx.compose.runtime:runtime-livedata"
     const val rxJava = "androidx.compose.runtime:runtime-rxjava2"
+    const val navigation = "androidx.navigation:navigation-compose:${Versions.navVersion}"
+}
+
+object Coil {
+    const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
 }

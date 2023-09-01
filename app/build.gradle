@@ -84,4 +84,6 @@ dependencies {
     implementation ComposeSpecific.viewModel
     implementation ComposeSpecific.liveData
     implementation ComposeSpecific.rxJava
+
+    implementation ComposeSpecific.navigation
 }

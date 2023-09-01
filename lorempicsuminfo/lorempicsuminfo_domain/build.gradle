@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace 'com.example.lorempicsuminfo_domain'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+
+    implementation project(":common:common_utils")
 
     implementation Deps.core
     implementation Deps.appCompact

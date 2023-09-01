@@ -47,6 +47,7 @@ dependencies {
 
     implementation project(":common:common_utils")
     implementation project(":lorempicsum:lorempicsum_domain")
+    implementation project(":lorempicsuminfo:lorempicsuminfo_presentation")
 
     implementation Deps.core
     implementation Deps.appCompact
@@ -65,8 +66,7 @@ dependencies {
     implementation(CoroutinesLifecycleScope.lifecycleViewModel)
     implementation(CoroutinesLifecycleScope.lifeCycleRuntime)
 
-    implementation(Glide.glide)
-    kapt(Glide.annotationProcessor)
+    implementation(Coil.coilCompose)
 
     implementation (ViewModelDelegate.viewModelDeligate)
     implementation(CircularProgressBar.swipeRefresh)
@@ -93,4 +93,6 @@ dependencies {
     implementation ComposeSpecific.viewModel
     implementation ComposeSpecific.liveData
     implementation ComposeSpecific.rxJava
+
+    implementation ComposeSpecific.navigation
 }
